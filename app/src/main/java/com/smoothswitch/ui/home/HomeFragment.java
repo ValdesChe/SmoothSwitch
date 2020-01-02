@@ -12,13 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.smoothswitch.R;
-import com.smoothswitch.RingerMode;
-import com.smoothswitch.RingerModeManager;
+import com.smoothswitch.helper.RingerMode;
+import com.smoothswitch.helper.RingerModeManager;
 
 public class HomeFragment extends Fragment {
 
     private RingerModeManager soundModeManager;
-
     private HomeViewModel homeViewModel;
     private Button silent, normal, vibrate;
 
@@ -30,18 +29,12 @@ public class HomeFragment extends Fragment {
         silent = root.findViewById(R.id.silentModeButton);
         normal = root.findViewById(R.id.ringerModeButton);
         vibrate = root.findViewById(R.id.vibrateModeButton);
-//        final TextView textView = root.findViewById(R.id.text_home);
         soundModeManager = new RingerModeManager(getActivity());
-
         silent.setOnClickListener(v -> soundModeManager.setRingerMode(RingerMode.SILENT));
         normal.setOnClickListener(v -> soundModeManager.setRingerMode(RingerMode.NORMAL));
         vibrate.setOnClickListener(v -> {
             soundModeManager.setRingerMode(RingerMode.VIBRATE);
             Toast.makeText(getContext(), "VIBRATE", Toast.LENGTH_SHORT).show();
-        });
-
-        homeViewModel.getText().observe(this, s -> {
-//                textView.setText(s);
         });
         return root;
     }

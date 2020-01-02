@@ -1,4 +1,4 @@
-package com.smoothswitch;
+package com.smoothswitch.helper;
 
 import android.app.Activity;
 import android.content.Context;
