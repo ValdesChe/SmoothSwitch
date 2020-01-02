@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">SmoothSwitch</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_0_title">Home</string>
+    <string name="tab_1_title">My Places</string>
+    <string name="tab_2_title">Maps</string>
+    <string name="tab_3_title">Tab 3</string>
     <string name="silentMode">Silent Mode</string>
     <string name="ringerMode">Ringer Mode</string>
     <string name="vibrateMode">Vibrate Mode</string>

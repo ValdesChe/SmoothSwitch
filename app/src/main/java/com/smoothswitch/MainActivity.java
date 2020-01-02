@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        PageViewModel.SectionsPagerAdapter sectionsPagerAdapter = new PageViewModel.SectionsPagerAdapter(this, getSupportFragmentManager());
+        PageViewModel.SectionsPagerAdapter sectionsPagerAdapter =
+                new PageViewModel.SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);

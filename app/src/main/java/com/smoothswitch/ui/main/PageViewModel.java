@@ -39,9 +39,10 @@ public class PageViewModel extends ViewModel {
      */
     public static class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        @StringRes
-        private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
         private final Context mContext;
+        @StringRes
+        private static final int[] TAB_TITLES = new int[]{R.string.tab_0_title,
+                R.string.tab_1_title, R.string.tab_2_title, R.string.tab_3_title};
 
         public SectionsPagerAdapter(Context context, FragmentManager fm) {
             super(fm);
@@ -49,22 +50,33 @@ public class PageViewModel extends ViewModel {
         }
 
         @Override
-        public Fragment getItem(int position) {
+        public Fragment getItem(int index) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            // Return a MyPlacesFragment (defined as a static inner class below).
+            switch (index) {
+                case 0:
+                    return new HomeFragment();
+                case 1:
+                    return new MyPlacesFragment();
+                case 2:
+                    return new MyPlacesFragment();
+                case 3:
+                    return new MyPlacesFragment();
+                default:
+                    return null;
+
+            }
         }
 
         @Nullable
         @Override
-        public CharSequence getPageTitle(int position) {
-            return mContext.getResources().getString(TAB_TITLES[position]);
+        public CharSequence getPageTitle(int index) {
+            return mContext.getResources().getString(TAB_TITLES[index]);
         }
 
         @Override
         public int getCount() {
-            // Show 2 total pages.
-            return 2;
+            return 4;
         }
     }
 }
