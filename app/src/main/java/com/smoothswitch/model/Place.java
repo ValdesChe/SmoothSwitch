@@ -5,7 +5,7 @@ public class Place {
     private String name;
     private double longitude;
     private double latitude;
-    private double raduis;
+    private double radius;
     private boolean isEnabled;
 
     public Place(int id, String name, double longitude, double latitude, double radius, boolean isEnabled) {
@@ -13,7 +13,7 @@ public class Place {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.raduis = radius;
+        this.radius = radius;
         this.isEnabled = isEnabled;
     }
 
@@ -50,12 +50,12 @@ public class Place {
         this.latitude = latitude;
     }
 
-    public double getRaduis() {
-        return raduis;
+    public double getRadius() {
+        return radius;
     }
 
-    public void setRaduis(double raduis) {
-        this.raduis = raduis;
+    public void setRadius(double radius) {
+        this.radius = radius;
     }
 
     public boolean isEnabled() {

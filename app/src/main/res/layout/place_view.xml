@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/placeNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd"
+        android:layout_alignParentTop="true"
+        android:textSize="@dimen/title2"
+        android:fontFamily="sans-serif"
+        android:text="@string/place_name" />
+    <TextView
+        android:id="@+id/placeRadiusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/big"
+        android:layout_toRightOf="@id/placeNameTextView"
+        android:layout_alignParentEnd="true"
+        android:text="@string/place_radius" />
+
+    <TextView
+        android:id="@+id/placeLatTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/placeNameTextView"
+        android:textSize="@dimen/big"
+        android:text="@string/place_lat" />
+    <TextView
+        android:id="@+id/placeLongTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/placeLatTextView"
+        android:textSize="@dimen/big"
+        android:text="@string/place_long" />
+    <Switch
+        android:id="@+id/placeIsEnabledSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:text="Switch" />
+</RelativeLayout>
