@@ -11,4 +11,5 @@
     <string name="place_lat">Latitude: %1$f</string>
     <string name="place_long">Longitude: %1$f</string>
     <string name="place_radius">(%1$.0f meters)</string>
+    <string name="google_maps_key">AIzaSyBivR2AyOy4la8P8oMraWkft2yHnF0tCCI</string>
 </resources>

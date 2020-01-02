@@ -59,7 +59,7 @@ public class PageViewModel extends ViewModel {
                 case 1:
                     return new MyPlacesFragment();
                 case 2:
-                    return new MyPlacesFragment();
+                    return new PlacePickerFragment();
                 case 3:
                     return new MyPlacesFragment();
                 default:
