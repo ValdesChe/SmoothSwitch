@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,7 +41,8 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
     private final int index = 1;
     private PageViewModel pageViewModel;
     Marker markerName = null;
-
+    Marker markerClicked = null;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,7 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_place_picker, container, false);
+        rootView.setClickable(true);
         return  rootView;
 
         /*
@@ -85,9 +88,20 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
         mapFragment.getMapAsync(this);
     }
 
+    public GoogleMap.OnMapClickListener mapClickListener = new GoogleMap.OnMapClickListener() {
+        @Override
+        public void onMapClick(LatLng latLng) {
+            // Si un maker existe le retirer et en créer un nouveau
+            if(markerClicked != null)
+                markerClicked.remove();
+            markerClicked = mMap.addMarker(new MarkerOptions().position(latLng));
+        }
+    };
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMapClickListener(mapClickListener);
         LocationHelper.instance().onChange(this);
     }
 
