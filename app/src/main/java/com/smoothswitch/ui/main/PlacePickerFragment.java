@@ -1,5 +1,6 @@
 package com.smoothswitch.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +18,13 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.smoothswitch.AddAlarm;
 import com.smoothswitch.R;
 import com.smoothswitch.helper.GPSPoint;
 import com.smoothswitch.helper.LocationHelper;
 import com.smoothswitch.helper.Workable;
 
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import androidx.annotation.NonNull;
@@ -42,7 +45,37 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
     private PageViewModel pageViewModel;
     Marker markerName = null;
     Marker markerClicked = null;
-    
+
+    private Button mButtonAddAlarm;
+
+
+    public void intiViewItems(View rootView){
+        mButtonAddAlarm = rootView.findViewById(R.id.add_alarm_btn);
+        // Setting click listener on add button
+        mButtonAddAlarm.setOnClickListener(buttonAddClicked);
+    }
+
+    // When add button is clicked
+    public View.OnClickListener buttonAddClicked = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            // Ouverture de la nouvelle fenetre
+           openAddActivity();
+        }
+    };
+
+    // Lancement de la fenetre d'ajout d'alarme
+    private void openAddActivity() {
+        // Setting the params
+        HashMap<String, LatLng> hashMap = new HashMap<String, LatLng>();
+        // On recupere les parametres depuis le marker
+        hashMap.put("key", markerClicked.getPosition());
+        Intent intent = new Intent(this.getContext() , AddAlarm.class);
+        intent.putExtra("localisation", hashMap);
+        // On demarre la nouvelle activité
+        startActivity(intent);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +89,11 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_place_picker, container, false);
         rootView.setClickable(true);
+        // Init components on view
+        intiViewItems(rootView);
+        // Hiding the add btn
+        mButtonAddAlarm.setVisibility(View.INVISIBLE);
+
         return  rootView;
 
         /*
@@ -94,6 +132,8 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
             // Si un maker existe le retirer et en créer un nouveau
             if(markerClicked != null)
                 markerClicked.remove();
+            if(mButtonAddAlarm.getVisibility() != View.VISIBLE)
+                mButtonAddAlarm.setVisibility(View.VISIBLE);
             markerClicked = mMap.addMarker(new MarkerOptions().position(latLng));
         }
     };
