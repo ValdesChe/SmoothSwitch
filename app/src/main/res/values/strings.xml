@@ -7,4 +7,5 @@
     <string name="silentMode">Silent Mode</string>
     <string name="ringerMode">Ringer Mode</string>
     <string name="vibrateMode">Vibrate Mode</string>
+    <string name="google_maps_key">AIzaSyBivR2AyOy4la8P8oMraWkft2yHnF0tCCI</string>
 </resources>
