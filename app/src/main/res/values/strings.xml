@@ -4,8 +4,12 @@
     <string name="tab_1_title">My Places</string>
     <string name="tab_2_title">Maps</string>
     <string name="tab_3_title">Tab 3</string>
-    <string name="silentMode">Silent Mode</string>
-    <string name="ringerMode">Ringer Mode</string>
-    <string name="vibrateMode">Vibrate Mode</string>
+    <string name="silent_mode">Silent Mode</string>
+    <string name="ringer_mode">Ringer Mode</string>
+    <string name="vibrate_mode">Vibrate Mode</string>
+    <string name="place_name">%1$s</string>
+    <string name="place_lat">Latitude: %1$f</string>
+    <string name="place_long">Longitude: %1$f</string>
+    <string name="place_radius">(%1$.0f meters)</string>
     <string name="google_maps_key">AIzaSyBivR2AyOy4la8P8oMraWkft2yHnF0tCCI</string>
 </resources>
