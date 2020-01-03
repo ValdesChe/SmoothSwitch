@@ -14,7 +14,7 @@ public class RingerModeManager {
 
     }
 
-    RingerMode getCurrentRingerMode() {
+    public RingerMode getCurrentRingerMode() {
         int ringerMode = audioManager.getRingerMode();
 
         if (ringerMode == AudioManager.RINGER_MODE_SILENT)

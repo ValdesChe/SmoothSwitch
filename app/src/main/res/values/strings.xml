@@ -15,4 +15,5 @@
     <string name="sample_name_alarm">ENSA_Tetouan</string>
     <string name="create_alarm_btn">Create Alarm</string>
     <string name="indicator_radius">Distance around the marker !</string>
+    <string name="placeName">Place Name</string>
 </resources>
