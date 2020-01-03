@@ -30,7 +30,7 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_PLACES + "("
-                + KEY_ID + " INTEGER PRIMARY KEY,"
+                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + KEY_NAME + " TEXT,"
                 + KEY_LAT + " REAL,"
                 + KEY_LONG + " REAL,"
@@ -116,7 +116,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private ContentValues mapPlaceToValues(Place place) {
         ContentValues values = new ContentValues();
-        values.put(KEY_ID, place.getId());
+
         values.put(KEY_NAME, place.getName());
         values.put(KEY_LAT, place.getLatitude());
         values.put(KEY_LONG, place.getLongitude());

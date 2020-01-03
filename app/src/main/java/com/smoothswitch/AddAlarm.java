@@ -110,9 +110,9 @@ public class AddAlarm extends AppCompatActivity {
             // Adding place alarm to database
             place.setEnabled(true);
             place.setName(alarmNameEditText.getText().toString());
-            place.setId(mDbHelper.getPlacesCount());
+            Logger.getAnonymousLogger().info("PLACE ADDED..........................");
             mDbHelper.addPlace(place);
-            Logger.getAnonymousLogger().info("PLACE ADDED");
+            Logger.getAnonymousLogger().info("PLACE ADDED..........................");
         }
     };
 
