@@ -18,6 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
+    private static final String KEY_RINGERMODE = "ringerMode";
     private static final String KEY_LAT = "lat";
     private static final String KEY_LONG = "long";
     private static final String KEY_RADIUS = "radius";
@@ -32,6 +33,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_PLACES + "("
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
                 + KEY_NAME + " TEXT,"
+                + KEY_RINGERMODE + " TEXT,"
                 + KEY_LAT + " REAL,"
                 + KEY_LONG + " REAL,"
                 + KEY_RADIUS + " TEXT,"
@@ -62,7 +64,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public Place getPlace(int id) {
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_PLACES, new String[]{KEY_ID, KEY_NAME, KEY_LAT,
+        Cursor cursor = db.query(TABLE_PLACES, new String[]{KEY_ID, KEY_NAME, KEY_RINGERMODE, KEY_LAT,
                         KEY_LONG, KEY_RADIUS, KEY_RADIUS}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor == null)
@@ -118,6 +120,7 @@ public class DbHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(KEY_NAME, place.getName());
+        values.put(KEY_RINGERMODE, place.getRingerMode());
         values.put(KEY_LAT, place.getLatitude());
         values.put(KEY_LONG, place.getLongitude());
         values.put(KEY_RADIUS, place.getRadius());
@@ -126,9 +129,9 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     private Place mapCursorToPlace(Cursor cursor) {
-        return new Place(cursor.getInt(0), cursor.getString(1),
-                cursor.getDouble(2), cursor.getDouble(3),
-                cursor.getDouble(4), cursor.getInt(5) == 1);
+        return new Place(cursor.getInt(0), cursor.getString(1),  cursor.getString(2),
+                cursor.getDouble(3), cursor.getDouble(4),
+                cursor.getDouble(5), cursor.getInt(6) == 1);
     }
 
     public void addPlaceAll(List<Place> places) {

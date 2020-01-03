@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -31,7 +32,7 @@ public class AddAlarm extends AppCompatActivity {
     SeekBar alarmRadiusSeekBar;
     TextView alarmeRadiusText;
     Button alarmCreateButton;
-
+    private String selectedMode = "";
 
     private DbHelper mDbHelper;
     Place place;
@@ -72,8 +73,18 @@ public class AddAlarm extends AppCompatActivity {
 
     private void addListenerOnSeekerChange() {
         alarmRadiusSeekBar.setOnSeekBarChangeListener(seekBarChangeListener);
-    }
+        alarmModeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedMode = adapterView.getItemAtPosition(i).toString();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                selectedMode = RingerMode.NORMAL.name();
+            }
+        });
+    }
 
     private SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
@@ -113,6 +124,7 @@ public class AddAlarm extends AppCompatActivity {
         public void onClick(View view) {
             // Adding place alarm to database
             place.setEnabled(true);
+            place.setRingerMode(selectedMode);
             place.setName(alarmNameEditText.getText().toString());
             mDbHelper.addPlace(place);
             Logger.getAnonymousLogger().info("PLACE ADDED..........................");

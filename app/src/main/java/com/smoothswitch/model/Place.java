@@ -3,6 +3,7 @@ package com.smoothswitch.model;
 public class Place {
     private int id;
     private String name;
+    private String ringerMode;
     private double longitude;
     private double latitude;
     private double radius;
@@ -12,9 +13,10 @@ public class Place {
 
     }
 
-    public Place(int id, String name, double longitude, double latitude, double radius, boolean isEnabled) {
+    public Place(int id, String name, String ringerMode,  double longitude, double latitude, double radius, boolean isEnabled) {
         this.id = id;
         this.name = name;
+        this.ringerMode = ringerMode;
         this.longitude = longitude;
         this.latitude = latitude;
         this.radius = radius;
@@ -68,5 +70,13 @@ public class Place {
 
     public void setEnabled(boolean enabled) {
         isEnabled = enabled;
+    }
+
+    public String getRingerMode() {
+        return ringerMode;
+    }
+
+    public void setRingerMode(String ringerMode) {
+        this.ringerMode = ringerMode;
     }
 }
