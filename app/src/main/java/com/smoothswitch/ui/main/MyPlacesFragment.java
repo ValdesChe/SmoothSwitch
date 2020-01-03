@@ -44,13 +44,13 @@ public class MyPlacesFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_my_places, container, false);
         mPlacesListView = root.findViewById(R.id.myPlacesListView);
         mDbHelper = new DbHelper(getContext());
-        List<Place> myPlaces = new ArrayList<>();
+       /* List<Place> myPlaces = new ArrayList<>();
         myPlaces.add(new Place(1, "ENSA", 35.5622, 5.3645, 10, true));
         myPlaces.add(new Place(1, "MAROC", 35.5622, 5.3645, 20, true));
         myPlaces.add(new Place(1, "YAOUNDE", 35.5622, 5.3645, 30, true));
         myPlaces.add(new Place(1, "BOBO-DSS0", 35.5622, 5.3645, 40, true));
-        mDbHelper.addPlaceAll(myPlaces);
-        mPlaceAdapter = new PlacesAdapter(getContext(), mDbHelper.getAllPlaces());//crazy just to test dbHelper
+        mDbHelper.addPlaceAll(myPlaces);*/
+        mPlaceAdapter = new PlacesAdapter(getContext(), mDbHelper.getAllPlaces()); //crazy just to test dbHelper
         mPlacesListView.setAdapter(mPlaceAdapter);
         mPlaceAdapter.notifyDataSetChanged();
         return root;

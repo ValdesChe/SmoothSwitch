@@ -8,6 +8,10 @@ public class Place {
     private double radius;
     private boolean isEnabled;
 
+    public Place(){
+
+    }
+
     public Place(int id, String name, double longitude, double latitude, double radius, boolean isEnabled) {
         this.id = id;
         this.name = name;

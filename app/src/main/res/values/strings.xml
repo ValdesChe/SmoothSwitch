@@ -12,4 +12,6 @@
     <string name="place_long">Longitude: %1$f</string>
     <string name="place_radius">(%1$.0f meters)</string>
     <string name="google_maps_key">AIzaSyBivR2AyOy4la8P8oMraWkft2yHnF0tCCI</string>
+    <string name="sample_name_alarm">ENSA_Tetouan</string>
+    <string name="create_alarm_btn">Create Alarm</string>
 </resources>

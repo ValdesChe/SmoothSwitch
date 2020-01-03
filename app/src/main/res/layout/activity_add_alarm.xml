@@ -6,4 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".AddAlarm">
 
+    <LinearLayout
+        android:layout_width="356dp"
+        android:layout_height="406dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/alarmPositionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:inputType="text"
+            android:maxLength="20"
+            android:minWidth="90dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/alarmNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/sample_name_alarm"
+            android:inputType="text"
+            android:maxLength="20"
+            android:minWidth="90dp"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/alarmModeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        <SeekBar
+            android:id="@+id/alarmRadiusSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:max="32"
+            android:progress="24" />
+
+        <Button
+            android:id="@+id/alarmCreateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="@string/create_alarm_btn" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

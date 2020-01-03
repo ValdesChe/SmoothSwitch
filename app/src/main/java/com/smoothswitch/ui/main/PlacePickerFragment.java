@@ -69,7 +69,7 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
         // Setting the params
         HashMap<String, LatLng> hashMap = new HashMap<String, LatLng>();
         // On recupere les parametres depuis le marker
-        hashMap.put("key", markerClicked.getPosition());
+        hashMap.put("latlong", markerClicked.getPosition());
         Intent intent = new Intent(this.getContext() , AddAlarm.class);
         intent.putExtra("localisation", hashMap);
         // On demarre la nouvelle activité
@@ -95,20 +95,6 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
         mButtonAddAlarm.setVisibility(View.INVISIBLE);
 
         return  rootView;
-
-        /*
-        mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapView);
-
-        if (mapFragment == null){
-            FragmentManager fragmentManager=getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            mapFragment= SupportMapFragment.newInstance();
-            fragmentTransaction.replace(R.id.mapView, mapFragment).commit();
-
-            Logger.getAnonymousLogger().info("MAP NULL ....................");
-        }
-        mapFragment.getMapAsync(this);
-        return rootView;*/
     }
 
     @Override

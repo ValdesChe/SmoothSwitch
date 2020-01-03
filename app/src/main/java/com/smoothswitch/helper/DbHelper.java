@@ -54,7 +54,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void addPlace(Place place) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = mapPlaceToValues(place);
-        db.insert(TABLE_PLACES, null, values);
+        db.insertOrThrow(TABLE_PLACES, null, values);
         db.close();
     }
 
@@ -116,6 +116,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private ContentValues mapPlaceToValues(Place place) {
         ContentValues values = new ContentValues();
+        values.put(KEY_ID, place.getId());
         values.put(KEY_NAME, place.getName());
         values.put(KEY_LAT, place.getLatitude());
         values.put(KEY_LONG, place.getLongitude());
