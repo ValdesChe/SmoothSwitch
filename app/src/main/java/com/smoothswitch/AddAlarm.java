@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.smoothswitch.helper.DbHelper;
@@ -28,7 +29,9 @@ public class AddAlarm extends AppCompatActivity {
     TextView alarmNameEditText;
     Spinner alarmModeSpinner;
     SeekBar alarmRadiusSeekBar;
+    TextView alarmeRadiusText;
     Button alarmCreateButton;
+
 
     private DbHelper mDbHelper;
     Place place;
@@ -41,7 +44,6 @@ public class AddAlarm extends AppCompatActivity {
         mDbHelper= new DbHelper(this.getBaseContext());
         place = new Place();
         initViewItems();
-        addItemsOnModeSpinner();
         addListenerOnCreateAlarmButton();
         addListenerOnSpinnerItemSelection();
         addListenerOnSeekerChange();
@@ -63,6 +65,7 @@ public class AddAlarm extends AppCompatActivity {
         alarmPositionEditText = findViewById(R.id.alarmPositionEditText);
         alarmNameEditText = findViewById(R.id.alarmNameEditText);
         alarmRadiusSeekBar = findViewById(R.id.alarmRadiusSeekBar);
+        alarmeRadiusText = findViewById(R.id.alarmeRadiusText);
         alarmCreateButton = findViewById(R.id.alarmCreateButton);
     }
 
@@ -76,6 +79,7 @@ public class AddAlarm extends AppCompatActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
             place.setRadius(i);
+            alarmeRadiusText.setText(new StringBuilder().append(String.valueOf(i)).append(" meter around the marker !").toString());
         }
 
         @Override
@@ -110,13 +114,20 @@ public class AddAlarm extends AppCompatActivity {
             // Adding place alarm to database
             place.setEnabled(true);
             place.setName(alarmNameEditText.getText().toString());
-            Logger.getAnonymousLogger().info("PLACE ADDED..........................");
             mDbHelper.addPlace(place);
             Logger.getAnonymousLogger().info("PLACE ADDED..........................");
+            alarmNameEditText.setText("");
+            Toast.makeText(getApplicationContext(), "Alarm mode created", Toast.LENGTH_LONG);
+
+            // Redirect to list View
+            openMainActivity();
         }
     };
 
-    private void addItemsOnModeSpinner() {
 
+    // Lancement de la fenetre d'accueil
+    private void openMainActivity() {
+        Intent intent = new Intent(getApplicationContext() , MainActivity.class);
+        startActivity(intent);
     }
 }

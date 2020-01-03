@@ -26,7 +26,8 @@
             android:inputType="text"
             android:maxLength="20"
             android:minWidth="90dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/alarmNameEditText"
@@ -37,7 +38,8 @@
             android:inputType="text"
             android:maxLength="20"
             android:minWidth="90dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:importantForAutofill="no" />
 
         <Spinner
             android:id="@+id/alarmModeSpinner"
@@ -53,8 +55,15 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:max="32"
+            android:max="100"
             android:progress="24" />
+
+        <TextView
+            android:id="@+id/alarmeRadiusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/indicator_radius" />
 
         <Button
             android:id="@+id/alarmCreateButton"
