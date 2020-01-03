@@ -20,11 +20,16 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.smoothswitch.AddAlarm;
 import com.smoothswitch.R;
+import com.smoothswitch.helper.DbHelper;
 import com.smoothswitch.helper.GPSPoint;
 import com.smoothswitch.helper.LocationHelper;
+import com.smoothswitch.helper.RingerMode;
+import com.smoothswitch.helper.RingerModeManager;
 import com.smoothswitch.helper.Workable;
+import com.smoothswitch.model.Place;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
 import androidx.annotation.NonNull;
@@ -133,10 +138,13 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
 
     @Override
     public void work(GPSPoint gpsPoint) {
+
         LatLng userLocation = new LatLng(gpsPoint.getLatitude(), gpsPoint.getLongitude());
+
         if(markerName != null)
             markerName.remove();
         markerName = mMap.addMarker(new MarkerOptions().position(userLocation).title("Votre position"));
         mMap.getUiSettings().setZoomControlsEnabled(true); // Enable zoom
+
     }
 }

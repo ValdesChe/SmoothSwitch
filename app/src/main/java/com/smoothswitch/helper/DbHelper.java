@@ -88,6 +88,20 @@ public class DbHelper extends SQLiteOpenHelper {
         return places;
     }
 
+    // Getting All Enabled Places
+    public List<Place> getAllEnabledPlaces() {
+        List<Place> places = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + TABLE_PLACES + " WHERE " + KEY_IS_ENABLED +" = 1";
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                places.add(mapCursorToPlace(cursor));
+            } while (cursor.moveToNext());
+        }
+        return places;
+    }
+
     // Updating single place
     public int updatePlace(Place place) {
         SQLiteDatabase db = getWritableDatabase();

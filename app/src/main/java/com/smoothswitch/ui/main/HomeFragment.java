@@ -12,10 +12,16 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.smoothswitch.R;
+import com.smoothswitch.helper.DbHelper;
 import com.smoothswitch.helper.GPSPoint;
 import com.smoothswitch.helper.LocationHelper;
+import com.smoothswitch.helper.RingerMode;
 import com.smoothswitch.helper.RingerModeManager;
 import com.smoothswitch.helper.Workable;
+import com.smoothswitch.model.Place;
+
+import java.util.List;
+import java.util.logging.Logger;
 
 
 /**
@@ -25,7 +31,7 @@ public class HomeFragment extends Fragment implements Workable<GPSPoint> {
 
     private final int index = 0;
     private PageViewModel pageViewModel;
-
+    private RingerModeManager ringerModeManager;
     private TextView placeNameView;
     private TextView latitudeView;
     private TextView longitudeView;
@@ -49,6 +55,7 @@ public class HomeFragment extends Fragment implements Workable<GPSPoint> {
         latitudeView = root.findViewById(R.id.latitude);
         longitudeView = root.findViewById(R.id.lognitude);
 
+
         return root;
     }
 
@@ -58,11 +65,26 @@ public class HomeFragment extends Fragment implements Workable<GPSPoint> {
         super.onViewCreated(view, savedInstanceState);
         pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
         pageViewModel.setIndex(index);
+        ringerModeManager = new RingerModeManager(this.getActivity());
         LocationHelper.instance().onChange(this);
     }
 
     public void work(GPSPoint gpsPoint) {
-        RingerModeManager ringerModeManager= new RingerModeManager(this.getActivity());
+
+
+        Logger.getAnonymousLogger().info("ON STAART IS CALLED");
+        DbHelper dbHelper = new DbHelper(getContext());
+        List<Place> activePlaces  = dbHelper.getAllEnabledPlaces();
+        for (Place p: activePlaces) {
+            double distance = LocationHelper.distance(gpsPoint.getLatitude(), gpsPoint.getLongitude(), p.getLatitude(), p.getLongitude());
+
+            Logger.getAnonymousLogger().info("DISTANCE CALCULÉE : " + distance);
+            if(distance<= p.getRadius()){
+                //activer le mode correspondant
+                ringerModeManager.setRingerMode(RingerMode.valueOf(p.getRingerMode()));
+            }
+        }
+
         String mode= ringerModeManager.getCurrentRingerMode().name();
         switch (mode){
             case "SILENT":
@@ -80,6 +102,8 @@ public class HomeFragment extends Fragment implements Workable<GPSPoint> {
 
         }
         setTextViews(gpsPoint);
+
+
     }
 
     private void setTextViews(GPSPoint gpsPoint) {
