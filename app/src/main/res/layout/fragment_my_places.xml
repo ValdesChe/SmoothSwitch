@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/list_x_margin"
         android:layout_marginRight="@dimen/list_x_margin"
+        android:layout_marginTop="@dimen/list_x_margin"
         android:dividerHeight="@dimen/div_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

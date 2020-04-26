@@ -8,6 +8,10 @@
     <dimen name="list_x_margin">16dp</dimen>
     <dimen name="title2">24sp</dimen>
     <dimen name="big">14sp</dimen>
-    <dimen name="normal">8sp</dimen>
-    <dimen name="div_height">8sp</dimen>
+    <dimen name="normal">10sp</dimen>
+    <dimen name="div_height">0.5sp</dimen>
+
+
+    <!-- alarm row dimensions  -->
+    <dimen name="row_padding">5sp</dimen>
 </resources>

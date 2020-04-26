@@ -8,10 +8,9 @@
     <string name="ringer_mode">Ringer Mode</string>
     <string name="vibrate_mode">Vibrate Mode</string>
     <string name="place_name">%1$s</string>
-    <string name="place_lat">Latitude: %1$f</string>
-    <string name="place_long">Longitude: %1$f</string>
+    <string name="place_lat">Latitude: %1$.2f</string>
+    <string name="place_long">Longitude: %1$.2f</string>
     <string name="place_radius">(%1$.0f meters)</string>
-    <string name="google_maps_key">AIzaSyBivR2AyOy4la8P8oMraWkft2yHnF0tCCI</string>
     <string name="sample_name_alarm">ENSA_Tetouan</string>
     <string name="create_alarm_btn">Create Alarm</string>
     <string name="indicator_radius">Distance around the marker !</string>

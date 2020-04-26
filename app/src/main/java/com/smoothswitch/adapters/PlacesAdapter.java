@@ -1,4 +1,4 @@
-package com.smoothswitch.model;
+package com.smoothswitch.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.smoothswitch.R;
+import com.smoothswitch.model.Place;
 
 import java.util.List;
 

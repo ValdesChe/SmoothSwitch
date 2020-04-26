@@ -12,11 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.smoothswitch.R;
 import com.smoothswitch.helper.DbHelper;
-import com.smoothswitch.model.Place;
-import com.smoothswitch.model.PlacesAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.smoothswitch.adapters.PlacesAdapter;
 
 
 /**
