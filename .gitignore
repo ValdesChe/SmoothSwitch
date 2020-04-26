@@ -153,3 +153,6 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.gitignore.io/api/java,androidstudio
+
+# GOOGLE MAP API Key ignore
+app/src/main/res/values/google_api.xml
