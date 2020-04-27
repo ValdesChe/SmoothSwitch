@@ -18,7 +18,7 @@
             android:name=".service.MainService"
             android:enabled="true"/>
 
-        <activity android:name=".AddAlarm" />
+        <activity android:name=".AddAlarmActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

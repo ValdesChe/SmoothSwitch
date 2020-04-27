@@ -1,4 +1,4 @@
-package com.smoothswitch.ui.main;
+package com.smoothswitch.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -70,18 +70,32 @@ public class HomeFragment extends Fragment implements Workable<GPSPoint> {
     }
 
     public void work(GPSPoint gpsPoint) {
-
-
-        Logger.getAnonymousLogger().info("ON STAART IS CALLED");
         DbHelper dbHelper = new DbHelper(getContext());
         List<Place> activePlaces  = dbHelper.getAllEnabledPlaces();
-        for (Place p: activePlaces) {
-            double distance = LocationHelper.distance(gpsPoint.getLatitude(), gpsPoint.getLongitude(), p.getLatitude(), p.getLongitude());
+        for (Place placeAlarm: activePlaces) {
 
+            // Si le mode actuel du téléphone est déja celui de notre alarme on continue
+            if(ringerModeManager.getCurrentRingerMode().equals(RingerMode.valueOf(placeAlarm.getRingerMode()))){
+
+                Logger.getAnonymousLogger().info("TELEPHONE DEJA AU MODE SOUHAITÉ");
+                continue;
+            }
+
+            double distance = LocationHelper.distance(gpsPoint.getLatitude(), gpsPoint.getLongitude(), placeAlarm.getLatitude(), placeAlarm.getLongitude());
             Logger.getAnonymousLogger().info("DISTANCE CALCULÉE : " + distance);
-            if(distance<= p.getRadius()){
+
+            // Si on est hors périmètre
+            if(distance > placeAlarm.getRadius()){
+
+                Logger.getAnonymousLogger().info("TELEPHONE HORS ZONE D'APPLICATION");
+                continue;
+            }
+
+            // Sinon si notre alarme est active
+            if(placeAlarm.isEnabled()){
+                Logger.getAnonymousLogger().info("ALARME = " + placeAlarm.getName() + "-- ACTIVE");
                 //activer le mode correspondant
-                ringerModeManager.setRingerMode(RingerMode.valueOf(p.getRingerMode()));
+                ringerModeManager.setRingerMode(RingerMode.valueOf(placeAlarm.getRingerMode()));
             }
         }
 
@@ -102,8 +116,6 @@ public class HomeFragment extends Fragment implements Workable<GPSPoint> {
 
         }
         setTextViews(gpsPoint);
-
-
     }
 
     private void setTextViews(GPSPoint gpsPoint) {
