@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class AddAlarm extends AppCompatActivity {
+public class AddAlarmActivity extends AppCompatActivity {
 
     TextView alarmPositionEditText;
     TextView alarmNameEditText;

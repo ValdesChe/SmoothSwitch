@@ -6,11 +6,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.smoothswitch.service.MainService;
-import com.smoothswitch.ui.main.PageViewModel;
+import com.smoothswitch.fragments.PageViewModel;
 
 public class MainActivity extends AppCompatActivity {
 

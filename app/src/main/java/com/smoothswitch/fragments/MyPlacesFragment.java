@@ -1,4 +1,4 @@
-package com.smoothswitch.ui.main;
+package com.smoothswitch.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

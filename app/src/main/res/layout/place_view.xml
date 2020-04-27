@@ -16,15 +16,6 @@
         android:text="@string/place_name" />
 
 
-    <TextView
-        android:id="@+id/placeRadiusTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/normal"
-        android:layout_toRightOf="@id/placeNameTextView"
-        android:layout_alignParentEnd="true"
-        android:text="@string/place_radius" />
-
 
     <TextView
         android:id="@+id/placeLatTextView"
@@ -44,11 +35,25 @@
         android:layout_below="@id/placeLatTextView"
         android:textSize="@dimen/normal"
         android:text="@string/place_long" />
+
     <Switch
         android:id="@+id/placeIsEnabledSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:text="Activer" />
+
+    <TextView
+        android:id="@+id/placeRadiusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/placeIsEnabledSwitch"
+        android:text="@string/place_radius"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:textSize="@dimen/normal" />
 </RelativeLayout>

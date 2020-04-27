@@ -1,4 +1,4 @@
-package com.smoothswitch.ui.main;
+package com.smoothswitch.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,31 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.smoothswitch.AddAlarm;
+import com.smoothswitch.AddAlarmActivity;
 import com.smoothswitch.R;
-import com.smoothswitch.helper.DbHelper;
 import com.smoothswitch.helper.GPSPoint;
 import com.smoothswitch.helper.LocationHelper;
-import com.smoothswitch.helper.RingerMode;
-import com.smoothswitch.helper.RingerModeManager;
 import com.smoothswitch.helper.Workable;
-import com.smoothswitch.model.Place;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.logging.Logger;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,7 +64,7 @@ public class PlacePickerFragment extends Fragment implements OnMapReadyCallback,
         HashMap<String, LatLng> hashMap = new HashMap<String, LatLng>();
         // On recupere les parametres depuis le marker
         hashMap.put("latlong", markerClicked.getPosition());
-        Intent intent = new Intent(this.getContext() , AddAlarm.class);
+        Intent intent = new Intent(this.getContext() , AddAlarmActivity.class);
         intent.putExtra("localisation", hashMap);
         // On demarre la nouvelle activité
         startActivity(intent);

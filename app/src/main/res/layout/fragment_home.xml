@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#F0ECEC"
     android:hapticFeedbackEnabled="false"
-    tools:context=".ui.main.MyPlacesFragment">
+    tools:context=".fragments.MyPlacesFragment">
 
 
     <androidx.cardview.widget.CardView

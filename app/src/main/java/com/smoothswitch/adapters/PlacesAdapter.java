@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -13,14 +14,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.smoothswitch.R;
+import com.smoothswitch.helper.DbHelper;
 import com.smoothswitch.model.Place;
 
 import java.util.List;
 
 public class PlacesAdapter extends ArrayAdapter<Place> {
 
+    private DbHelper mDbHelper;
     public PlacesAdapter(Context context, List<Place> places) {
         super(context, R.layout.place_view, places);
+        mDbHelper = new DbHelper(getContext());
     }
 
     @NonNull
@@ -41,6 +45,12 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
                 placeLat.setText(res.getString(R.string.place_lat, place.getLatitude()));
                 placeLong.setText(res.getString(R.string.place_long, place.getLongitude()));
                 placeIsEnabled.setChecked(place.isEnabled());
+
+                // If the switch button is clicked
+                placeIsEnabled.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    place.setEnabled(isChecked);
+                    mDbHelper.updatePlace(place);
+                });
             }
         }
         return convertView;
